@@ -1,0 +1,13 @@
+REGISTRO DE CAMBIOS INTRODUCIDOS EN GITHUB - SEMANA 1 / CONTRATOS
+Pieza: Datos (tienda-ucjc-datos)
+Estudiante: Hans Jefferson Arauco Sanchez
+
+1. Documentación incorporada:
+   - Añadidas Hojas A, B y C cumplimentadas en la carpeta /docs.
+   - Hoja A: Definición de responsabilidades y pantalla mínima de la pieza Datos.
+   - Hoja B: Acuerdos de contrato firmados con Compra (ucjc:compra:pedido-confirmado) e Identidad (ucjc:identidad:sesion-cambiada).
+   - Hoja C: Estimaciones de equipo y registro de horas reales para Semana 1 y 2.
+
+2. Actualizaciones en repositorio:
+   - TIEMPOS.md: Incorporadas las filas de la negociación de contratos y la estimación de la Semana 2 para la v0.2.0.
+   - README.md: Pendiente a rellenar el 04/11/2026
