@@ -61,3 +61,11 @@ Requisito: **Node ≥ 20** (el workflow usa Node 22). Custom element canónico: 
 5. El repositorio debe ser **público** para que el shell pueda importar la URL por HTTPS.
 
 URL esperada: `https://<usuario>.github.io/tienda-ucjc-datos/v0.2.0/remote.js`.
+
+### Tests
+
+```bash
+npm test
+```
+
+Comprueban el custom element, el `export default` y el flujo mínimo de eventos `@1`.
