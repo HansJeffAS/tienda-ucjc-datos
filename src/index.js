@@ -1,4 +1,4 @@
-class UcjcDatos extends HTMLElement {
+class UcjcPedidos extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.innerHTML = `
@@ -9,6 +9,8 @@ class UcjcDatos extends HTMLElement {
   }
 }
 
-if (!customElements.get('ucjc-datos')) {
-  customElements.define('ucjc-datos', UcjcDatos);
+if (!customElements.get('ucjc-pedidos')) {
+  customElements.define('ucjc-pedidos', UcjcPedidos);
 }
+
+export default { nombre: 'datos', version: '0.2.0' };
