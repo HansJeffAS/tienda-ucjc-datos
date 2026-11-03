@@ -1,13 +1,16 @@
-REGISTRO DE CAMBIOS INTRODUCIDOS EN GITHUB - SEMANA 1 / CONTRATOS
-Pieza: Datos (tienda-ucjc-datos)
+REGISTRO DE CAMBIOS INTRODUCIDOS EN GITHUB
+Pieza: Datos (<ucjc-pedidos>)
 Estudiante: Hans Jefferson Arauco Sanchez
 
-1. Documentación incorporada:
-   - Añadidas Hojas A, B y C cumplimentadas en la carpeta /docs.
-   - Hoja A: Definición de responsabilidades y pantalla mínima de la pieza Datos.
-   - Hoja B: Acuerdos de contrato firmados con Compra (ucjc:compra:pedido-confirmado) e Identidad (ucjc:identidad:sesion-cambiada).
-   - Hoja C: Estimaciones de equipo y registro de horas reales para Semana 1 y 2.
+1. Correcciones de documentación:
+   - Hojas A, B y C cumplimentadas y custodiadas en formato físico/entrega por correo docente (no subidas al repositorio por privacidad).
+   - Hoja A: Definición de responsabilidades y vista mínima de pedidos.
+   - Hoja B: Acuerdos de contratos fijados con Compra e Identidad bajo nomenclatura oficial con versión @1.
+   - Hoja C: Estimaciones de equipo y registro de horas reales de Semana 1 y 2.
 
-2. Actualizaciones en repositorio:
-   - TIEMPOS.md: Incorporadas las filas de la negociación de contratos y la estimación de la Semana 2 para la v0.2.0.
-   - README.md: Pendiente a rellenar el 04/11/2026
+2. Actualizaciones en repositorio y código (v0.2.0):
+   - Custom Element: Renombrado oficial de <ucjc-datos> a <ucjc-pedidos> en src/index.js, index.html y documentación.
+   - Build Vite: Configurada salida exclusiva en dist/remote.js con export default { nombre, version } e inlineDynamicImports.
+   - README.md: Limpieza de nombres obsoletos; especificados únicamente los eventos canónicos ucjc:compra:pedido-confirmado@1 y ucjc:identidad:sesion-cambiada@1.
+   - TIEMPOS.md: Ajustadas las horas reales de Semana 1 (3,5 h) y horas reales de Semana 2 (3h) para la release v0.2.0.
+   - CI/CD: Incorporado workflow de GitHub Actions (.github/workflows/release.yml) para despliegue automatizado en GitHub Pages bajo gh-pages/v0.2.0/.
