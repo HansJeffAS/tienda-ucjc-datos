@@ -3,7 +3,7 @@
 - **Pieza:** Datos (persistencia de pedidos y vista «Mis pedidos»)
 - **Integrantes:** Hans Arauco Sanchez
 - **Responsable:** Hans Arauco Sanchez
-- **Custom Element:** `<ucjc-datos>`
+- **Custom Element:** `<ucjc-pedidos>`
 
 ---
 
@@ -50,3 +50,22 @@ Nuestra pieza **no emite eventos** hacia otros micro-frontends en esta fase; ún
 
 ### Eventos Emitidos
 - Ninguno obligatorio inicialmente.
+## Cómo se publica (contrato de carga del shell)
+
+Requisito: **Node ≥ 20** (el workflow usa Node 22). Custom element canónico: **`<ucjc-pedidos>`**.
+
+1. `npm ci && npm run build` → genera `dist/remote.js` (ya no `index.js`).
+2. Etiquetar y empujar: `git tag v0.2.0 && git push origin v0.2.0`.
+3. El workflow `.github/workflows/release.yml` publica `dist/` en `gh-pages/v0.2.0/`.
+4. *Settings → Pages* → rama **`gh-pages`**, carpeta **`/`**.
+5. El repositorio debe ser **público** para que el shell pueda importar la URL por HTTPS.
+
+URL esperada: `https://<usuario>.github.io/tienda-ucjc-datos/v0.2.0/remote.js`.
+
+### Tests
+
+```bash
+npm test
+```
+
+Comprueban el custom element, el `export default` y el flujo mínimo de eventos `@1`.
