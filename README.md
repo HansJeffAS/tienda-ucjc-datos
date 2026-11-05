@@ -23,7 +23,7 @@
     - `price` (number, obligatorio)
     - `quantity` (number, obligatorio)
 
-#### 2. `ucjc:compra:pedido-confirmado@1`
+#### 2. `ucjc:identidad:sesion-cambiada@1`
 * **Origen:** Pieza Identidad.
 * **Propósito:** Informa del inicio o cierre de sesión para filtrar los pedidos visibles en «Mis pedidos» según el usuario conectado.
 * **Campos (`event.detail`):**
