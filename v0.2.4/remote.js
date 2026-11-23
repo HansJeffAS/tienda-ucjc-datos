@@ -2,8 +2,8 @@ var x = (e) => {
   throw TypeError(e);
 };
 var E = (e, i, t) => i.has(e) || x("Cannot " + t);
-var o = (e, i, t) => (E(e, i, "read from private field"), t ? t.call(e) : i.get(e)), c = (e, i, t) => i.has(e) ? x("Cannot add the same private member more than once") : i instanceof WeakSet ? i.add(e) : i.set(e, t), n = (e, i, t, d) => (E(e, i, "write to private field"), d ? d.call(e, t) : i.set(e, t), t), u = (e, i, t) => (E(e, i, "access private method"), t);
-const y = "ucjc:compra:pedido-confirmado@2", I = "ucjc:identidad:sesion-cambiada@1", k = `
+var o = (e, i, t) => (E(e, i, "read from private field"), t ? t.call(e) : i.get(e)), m = (e, i, t) => i.has(e) ? x("Cannot add the same private member more than once") : i instanceof WeakSet ? i.add(e) : i.set(e, t), l = (e, i, t, d) => (E(e, i, "write to private field"), d ? d.call(e, t) : i.set(e, t), t), u = (e, i, t) => (E(e, i, "access private method"), t);
+const w = "ucjc:compra:pedido-confirmado@1", y = "ucjc:compra:pedido-confirmado@2", I = "ucjc:identidad:sesion-cambiada@1", k = `
   :host { display:block; font:15px/1.45 system-ui,sans-serif; color:#152033; }
   .box { background:#00409a; border:2px solid #00409a; border-radius:12px; padding:1rem 1.1rem; }
   .box2 { background:#ffffff; border:1px solid #ffffff; border-radius:12px; padding:1rem 1.1rem; }
@@ -24,17 +24,17 @@ const y = "ucjc:compra:pedido-confirmado@2", I = "ucjc:identidad:sesion-cambiada
   .sin-productos { font-size:.85rem; color:#64748b; margin:.4rem 0; font-style:italic; }
   .fecha { display:block; color: black; font-size:.75rem; margin-top:1rem; }
 `;
-var p, a, l, m, b, s, $, h;
-class v extends HTMLElement {
+var p, a, c, s, b, n, $, h;
+class S extends HTMLElement {
   constructor() {
     super(...arguments);
-    c(this, s);
-    c(this, p, []);
-    c(this, a, null);
-    c(this, l, null);
-    c(this, m, (t) => {
+    m(this, n);
+    m(this, p, []);
+    m(this, a, null);
+    m(this, c, null);
+    m(this, s, (t) => {
       const d = t.detail || {};
-      d.pedidoId && (n(this, p, [
+      d.pedidoId && (l(this, p, [
         {
           pedidoId: d.pedidoId,
           usuarioId: d.usuarioId,
@@ -44,30 +44,30 @@ class v extends HTMLElement {
           lineas: Array.isArray(d.lineas) ? d.lineas : []
         },
         ...o(this, p)
-      ]), u(this, s, h).call(this));
+      ]), u(this, n, h).call(this));
     });
-    c(this, b, (t) => {
+    m(this, b, (t) => {
       var f, r;
       const d = t.detail || {};
       if (!d.autenticado) {
-        n(this, a, null), n(this, l, null), u(this, s, h).call(this);
+        l(this, a, null), l(this, c, null), u(this, n, h).call(this);
         return;
       }
-      n(this, a, ((f = d.usuario) == null ? void 0 : f.id) ?? null), n(this, l, ((r = d.usuario) == null ? void 0 : r.email) ?? null), u(this, s, h).call(this);
+      l(this, a, ((f = d.usuario) == null ? void 0 : f.id) ?? null), l(this, c, ((r = d.usuario) == null ? void 0 : r.email) ?? null), u(this, n, h).call(this);
     });
   }
   connectedCallback() {
-    this.attachShadow({ mode: "open" }), window.addEventListener(y, o(this, m)), window.addEventListener(I, o(this, b)), u(this, s, h).call(this);
+    this.attachShadow({ mode: "open" }), window.addEventListener(w, o(this, s)), window.addEventListener(y, o(this, s)), window.addEventListener(I, o(this, b)), u(this, n, h).call(this);
   }
   disconnectedCallback() {
-    window.removeEventListener(y, o(this, m)), window.removeEventListener(I, o(this, b));
+    window.removeEventListener(w, o(this, s)), window.removeEventListener(y, o(this, s)), window.removeEventListener(I, o(this, b));
   }
 }
-p = new WeakMap(), a = new WeakMap(), l = new WeakMap(), m = new WeakMap(), b = new WeakMap(), s = new WeakSet(), $ = function() {
+p = new WeakMap(), a = new WeakMap(), c = new WeakMap(), s = new WeakMap(), b = new WeakMap(), n = new WeakSet(), $ = function() {
   return o(this, a) ? o(this, p).filter((t) => t.usuarioId === o(this, a)) : [];
 }, h = function() {
-  const t = u(this, s, $).call(this), d = o(this, a) ? `👨‍🦱 Usuario: <b>${o(this, a)}</b> — ✉️ Email: <b>${o(this, l) ? ` ${o(this, l)}` : ""}</b>` : "Sin sesión — la lista se oculta (contrato `@2`)", f = o(this, a) ? t.length ? t.map((r) => {
-    const w = r.lineas.length ? `<table class="productos-tabla">
+  const t = u(this, n, $).call(this), d = o(this, a) ? `👨‍🦱 Usuario: <b>${o(this, a)}</b> — ✉️ Email: <b>${o(this, c) ? ` ${o(this, c)}` : ""}</b>` : "Sin sesión — la lista se oculta (contrato `@2`)", f = o(this, a) ? t.length ? t.map((r) => {
+    const v = r.lineas.length ? `<table class="productos-tabla">
                     <thead>
                       <tr>
                         <th>Producto</th>
@@ -92,7 +92,7 @@ p = new WeakMap(), a = new WeakMap(), l = new WeakMap(), m = new WeakMap(), b = 
                     <summary>
                       <span class="badge">${r.pedidoId}</span> · Total: <b>${r.total.toFixed(2)} ${r.moneda}</b> · ${r.lineas.length} Producto(s)
                     </summary>
-                    ${w}
+                    ${v}
                     <span class="fecha">${r.creadoEn || ""}</span>
                   </details>
                 </li>`;
@@ -107,7 +107,7 @@ p = new WeakMap(), a = new WeakMap(), l = new WeakMap(), m = new WeakMap(), b = 
           <button type="button" data-a="demo">Simular Pedido</button>
         </div>
       </div>`, this.shadowRoot.querySelector('[data-a="demo"]').onclick = () => {
-    o(this, a) || (n(this, a, "u-demo"), n(this, l, "demo@alumno.ucjc.edu")), o(this, m).call(this, {
+    o(this, a) || (l(this, a, "u-demo"), l(this, c, "demo@alumno.ucjc.edu")), o(this, s).call(this, {
       detail: {
         pedidoId: `PED-DEMO-${Date.now()}`,
         usuarioId: o(this, a),
@@ -131,7 +131,7 @@ p = new WeakMap(), a = new WeakMap(), l = new WeakMap(), m = new WeakMap(), b = 
           }
         ]
       }
-    }), o(this, m).call(this, {
+    }), o(this, s).call(this, {
       detail: {
         pedidoId: `PED-DEMO-${Date.now()}`,
         usuarioId: o(this, a),
@@ -158,8 +158,8 @@ p = new WeakMap(), a = new WeakMap(), l = new WeakMap(), m = new WeakMap(), b = 
     });
   };
 };
-customElements.get("ucjc-pedidos") || customElements.define("ucjc-pedidos", v);
-const C = { nombre: "datos", version: "0.2.4" };
+customElements.get("ucjc-pedidos") || customElements.define("ucjc-pedidos", S);
+const D = { nombre: "datos", version: "0.2.4" };
 export {
-  C as default
+  D as default
 };
