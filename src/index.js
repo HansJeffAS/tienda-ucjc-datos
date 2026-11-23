@@ -1,4 +1,5 @@
-const EVT_PED = 'ucjc:compra:pedido-confirmado@2';
+const EVT_PED = 'ucjc:compra:pedido-confirmado@1';
+const EVT_PED2 = 'ucjc:compra:pedido-confirmado@2'
 const EVT_SES = 'ucjc:identidad:sesion-cambiada@1';
 
 const css = `
@@ -61,12 +62,14 @@ class UcjcPedidos extends HTMLElement {
   connectedCallback() {
     this.attachShadow({ mode: 'open' });
     window.addEventListener(EVT_PED, this.#onPed);
+    window.addEventListener(EVT_PED2, this.#onPed);
     window.addEventListener(EVT_SES, this.#onSes);
     this.#pintar();
   }
 
   disconnectedCallback() {
     window.removeEventListener(EVT_PED, this.#onPed);
+    window.removeEventListener(EVT_PED2, this.#onPed);
     window.removeEventListener(EVT_SES, this.#onSes);
   }
 
