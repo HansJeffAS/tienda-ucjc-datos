@@ -9,7 +9,7 @@
 
 ## Contratos de Eventos (Versión 1 - Acordada en Hoja B)
 
-#### 1. `ucjc:compra:pedido-confirmado@1`
+#### 1. `ucjc:compra:pedido-confirmado@2`
 * **Origen:** Pieza Compra.
 * **Propósito:** Notifica que un pedido ha sido finalizado para almacenarlo en la persistencia y reflejarlo en el historial.
 * **Campos (`event.detail`):**
@@ -17,6 +17,7 @@
   - `usuarioId` (string, obligatorio): Identificador del usuario que realizó la compra.
   - `creadoEn` (string ISO, obligatorio): Marca de tiempo del pedido.
   - `total` (number, obligatorio): Importe total del pedido.
+  - `moneda` (string, obligatorio): Distintas divisas EUR, USD, etc.
   - `lineas` (array, obligatorio): Lista de productos comprados. Cada elemento contiene:
     - `productId` (string, obligatorio)
     - `nombre` (string, obligatorio)
@@ -41,4 +42,4 @@
 npm test
 ```
 
-Comprueban el custom element, el `export default` y el flujo mínimo de eventos `@1`.
+Comprueban el custom element, el `export default` y el flujo mínimo de eventos `@2`.

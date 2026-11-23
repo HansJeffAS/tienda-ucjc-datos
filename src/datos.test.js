@@ -7,7 +7,7 @@ describe('ucjc-pedidos (Datos A)', () => {
   });
 
   it('exporta metadatos y registra CE canónico', () => {
-    expect(mod).toEqual({ nombre: 'datos', version: '0.2.0' });
+    expect(mod).toEqual({ nombre: 'datos', version: '0.2.4' });
     expect(customElements.get('ucjc-pedidos')).toBeTruthy();
     expect(customElements.get('ucjc-datos')).toBeFalsy();
   });
@@ -25,7 +25,7 @@ describe('ucjc-pedidos (Datos A)', () => {
       })
     );
     window.dispatchEvent(
-      new CustomEvent('ucjc:compra:pedido-confirmado@1', {
+      new CustomEvent('ucjc:compra:pedido-confirmado@2', {
         detail: {
           pedidoId: 'PED-1',
           usuarioId: 'u-1',
