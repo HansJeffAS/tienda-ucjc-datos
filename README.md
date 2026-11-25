@@ -18,6 +18,7 @@
   - `creadoEn` (string ISO, obligatorio): Marca de tiempo del pedido.
   - `total` (number, obligatorio): Importe total del pedido.
   - `moneda` (string, obligatorio): Distintas divisas EUR, USD, etc.
+  - `campana` (string, optional): Muestra la campana o evento activo.
   - `lineas` (array, obligatorio): Lista de productos comprados. Cada elemento contiene:
     - `productId` (string, obligatorio)
     - `nombre` (string, obligatorio)

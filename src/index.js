@@ -28,6 +28,7 @@ class UcjcPedidos extends HTMLElement {
   #pedidos = [];
   #usuarioId = null;
   #email = null;
+  #mostrarCampana = true;
 
   #onPed = (e) => {
     const d = e.detail || {};
@@ -39,6 +40,7 @@ class UcjcPedidos extends HTMLElement {
         creadoEn: d.creadoEn,
         total: Number(d.total) || 0,
         moneda: d.moneda || d.monedas || 'EUR',
+        campana: d.campana || null,
         lineas: Array.isArray(d.lineas) ? d.lineas : [],
       },
       ...this.#pedidos,
@@ -116,7 +118,7 @@ class UcjcPedidos extends HTMLElement {
                 <li class="pedido-item">
                   <details>
                     <summary>
-                      <span class="badge">${p.pedidoId}</span> · Total: <b>${p.total.toFixed(2)} ${p.moneda}</b> · ${p.lineas.length} Producto(s)
+                      <span class="badge">${p.pedidoId}</span> · Total: <b>${p.total.toFixed(2)} ${p.moneda}</b> · ${p.lineas.length} Producto(s)${this.#mostrarCampana && p.campana ? ` · <span class="campana">Campaña: <b>${p.campana}</b></span>` : ''}
                     </summary>
                     ${itemsHtml}
                     <span class="fecha">${p.creadoEn || ''}</span>
@@ -124,7 +126,7 @@ class UcjcPedidos extends HTMLElement {
                 </li>`;
             })
             .join('')
-        : '<li><i>Aún no hay pedidos para este usuario</i></li>';
+        : '<li><i>Aún no hay pedidos confirmados para este usuario</i></li>';
         
     this.shadowRoot.innerHTML = `
       <style>${css}</style>
@@ -134,8 +136,14 @@ class UcjcPedidos extends HTMLElement {
         <div class="box2">
           <ul>${lista}</ul>
           <button type="button" data-a="demo">Simular Pedido</button>
+          <button type="button" data-a="toggle-campana">${this.#mostrarCampana ? 'Ocultar campaña' : 'Mostrar campaña'}</button>
         </div>
       </div>`;
+
+    this.shadowRoot.querySelector('[data-a="toggle-campana"]').onclick = () => {
+      this.#mostrarCampana = !this.#mostrarCampana;
+      this.#pintar();
+    };
 
     this.shadowRoot.querySelector('[data-a="demo"]').onclick = () => {
       if (!this.#usuarioId) {
@@ -149,6 +157,7 @@ class UcjcPedidos extends HTMLElement {
           creadoEn: new Date().toISOString(),
           total: 35.99,
           moneda: 'EUR',
+          campana: 'BlackFriday',
           lineas: [
             {
               productoId: 'prod-101',
@@ -200,4 +209,4 @@ if (!customElements.get('ucjc-pedidos')) {
   customElements.define('ucjc-pedidos', UcjcPedidos);
 }
 
-export default { nombre: 'datos', version: '0.2.4' };
+export default { nombre: 'datos', version: '0.2.5' };
