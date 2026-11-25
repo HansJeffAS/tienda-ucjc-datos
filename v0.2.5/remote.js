@@ -42,7 +42,7 @@ class C extends HTMLElement {
           creadoEn: o.creadoEn,
           total: Number(o.total) || 0,
           moneda: o.moneda || o.monedas || "EUR",
-          campana: o.campana || null,
+          campaña: o.campaña || null,
           lineas: Array.isArray(o.lineas) ? o.lineas : []
         },
         ...t(this, b)
@@ -92,7 +92,7 @@ b = new WeakMap(), i = new WeakMap(), m = new WeakMap(), p = new WeakMap(), c = 
                 <li class="pedido-item">
                   <details>
                     <summary>
-                      <span class="badge">${s.pedidoId}</span> · Total: <b>${s.total.toFixed(2)} ${s.moneda}</b> · ${s.lineas.length} Producto(s)${t(this, p) && s.campana ? ` · <span class="campana">Campaña: <b>${s.campana}</b></span>` : ""}
+                      <span class="badge">${s.pedidoId}</span> · Total: <b>${s.total.toFixed(2)} ${s.moneda}</b> · ${s.lineas.length} Producto(s)${t(this, p) && s.campaña ? ` · <span class="campana">Campaña: <b>${s.campaña}</b></span>` : ""}
                     </summary>
                     ${v}
                     <span class="fecha">${s.creadoEn || ""}</span>
@@ -119,7 +119,7 @@ b = new WeakMap(), i = new WeakMap(), m = new WeakMap(), p = new WeakMap(), c = 
         creadoEn: (/* @__PURE__ */ new Date()).toISOString(),
         total: 35.99,
         moneda: "EUR",
-        campana: "BlackFriday",
+        campaña: "BlackFriday",
         lineas: [
           {
             productoId: "prod-101",
