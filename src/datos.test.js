@@ -7,7 +7,7 @@ describe('ucjc-pedidos (Datos A)', () => {
   });
 
   it('exporta metadatos y registra CE canónico', () => {
-    expect(mod).toEqual({ nombre: 'datos', version: '0.2.4' });
+    expect(mod).toEqual({ nombre: 'datos', version: '0.2.5' });
     expect(customElements.get('ucjc-pedidos')).toBeTruthy();
     expect(customElements.get('ucjc-datos')).toBeFalsy();
   });
@@ -31,6 +31,8 @@ describe('ucjc-pedidos (Datos A)', () => {
           usuarioId: 'u-1',
           creadoEn: '2026-11-02T12:00:00Z',
           total: 19.99,
+          moneda: 'EUR',
+          campana: 'Blackfriday',
           lineas: [{ productoId: 'p1', nombre: 'Camiseta', precio: 19.99, cantidad: 1 }],
         },
       })
@@ -45,5 +47,43 @@ describe('ucjc-pedidos (Datos A)', () => {
     );
     await Promise.resolve();
     expect(el.shadowRoot.textContent).toMatch(/Sin sesión|Inicia sesión/i);
+  });
+
+  it('permite mostrar y ocultar la campaña en el resumen del pedido', async () => {
+    const el = document.createElement('ucjc-pedidos');
+    document.body.appendChild(el);
+
+    window.dispatchEvent(
+      new CustomEvent('ucjc:identidad:sesion-cambiada@1', {
+        detail: {
+          autenticado: true,
+          usuario: { id: 'u-1', email: 'a@ucjc.edu' },
+        },
+      })
+    );
+    window.dispatchEvent(
+      new CustomEvent('ucjc:compra:pedido-confirmado@2', {
+        detail: {
+          pedidoId: 'PED-CAMP',
+          usuarioId: 'u-1',
+          creadoEn: '2026-11-02T12:00:00Z',
+          total: 25,
+          moneda: 'EUR',
+          campana: 'BlackFriday',
+          lineas: [{ productoId: 'p1', nombre: 'Camiseta', precio: 25, cantidad: 1 }],
+        },
+      })
+    );
+    await Promise.resolve();
+
+    expect(el.shadowRoot.textContent).toContain('Campaña: BlackFriday');
+    expect(el.shadowRoot.querySelector('[data-a="toggle-campana"]').textContent).toBe('Ocultar campaña');
+
+    el.shadowRoot.querySelector('[data-a="toggle-campana"]').click();
+    expect(el.shadowRoot.textContent).not.toContain('Campaña: BlackFriday');
+    expect(el.shadowRoot.querySelector('[data-a="toggle-campana"]').textContent).toBe('Mostrar campaña');
+
+    el.shadowRoot.querySelector('[data-a="toggle-campana"]').click();
+    expect(el.shadowRoot.textContent).toContain('Campaña: BlackFriday');
   });
 });
