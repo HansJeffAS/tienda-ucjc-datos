@@ -32,7 +32,7 @@ describe('ucjc-pedidos (Datos A)', () => {
           creadoEn: '2026-11-02T12:00:00Z',
           total: 19.99,
           moneda: 'EUR',
-          campana: 'Blackfriday',
+          campaña: 'Blackfriday',
           lineas: [{ productoId: 'p1', nombre: 'Camiseta', precio: 19.99, cantidad: 1 }],
         },
       })
@@ -69,7 +69,7 @@ describe('ucjc-pedidos (Datos A)', () => {
           creadoEn: '2026-11-02T12:00:00Z',
           total: 25,
           moneda: 'EUR',
-          campana: 'BlackFriday',
+          campaña: 'BlackFriday',
           lineas: [{ productoId: 'p1', nombre: 'Camiseta', precio: 25, cantidad: 1 }],
         },
       })

@@ -40,7 +40,7 @@ class UcjcPedidos extends HTMLElement {
         creadoEn: d.creadoEn,
         total: Number(d.total) || 0,
         moneda: d.moneda || d.monedas || 'EUR',
-        campana: d.campana || null,
+        campaña: d.campaña || null,
         lineas: Array.isArray(d.lineas) ? d.lineas : [],
       },
       ...this.#pedidos,
@@ -118,7 +118,7 @@ class UcjcPedidos extends HTMLElement {
                 <li class="pedido-item">
                   <details>
                     <summary>
-                      <span class="badge">${p.pedidoId}</span> · Total: <b>${p.total.toFixed(2)} ${p.moneda}</b> · ${p.lineas.length} Producto(s)${this.#mostrarCampana && p.campana ? ` · <span class="campana">Campaña: <b>${p.campana}</b></span>` : ''}
+                      <span class="badge">${p.pedidoId}</span> · Total: <b>${p.total.toFixed(2)} ${p.moneda}</b> · ${p.lineas.length} Producto(s)${this.#mostrarCampana && p.campaña ? ` · <span class="campana">Campaña: <b>${p.campaña}</b></span>` : ''}
                     </summary>
                     ${itemsHtml}
                     <span class="fecha">${p.creadoEn || ''}</span>
@@ -157,7 +157,7 @@ class UcjcPedidos extends HTMLElement {
           creadoEn: new Date().toISOString(),
           total: 35.99,
           moneda: 'EUR',
-          campana: 'BlackFriday',
+          campaña: 'BlackFriday',
           lineas: [
             {
               productoId: 'prod-101',
